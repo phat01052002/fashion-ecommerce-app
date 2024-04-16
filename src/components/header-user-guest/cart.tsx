@@ -1,9 +1,14 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import { Icon } from '@rneui/themed';
-import { MAIN_COLOR } from '../../../constant';
-
-const Cart: React.FC = (props) => {
+import { ParamListBase, useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+interface CartProps {
+    themes: string;
+}
+const Cart: React.FC<CartProps> = (props) => {
+    const { themes } = props;
+    const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
     return (
         <View
             style={{
@@ -12,7 +17,13 @@ const Cart: React.FC = (props) => {
                 paddingTop: 6,
             }}
         >
-            <Icon name="shopping-cart" type="font-awesome" size={26} color={MAIN_COLOR} />
+            <Icon
+                name="shopping-cart"
+                type="font-awesome"
+                size={26}
+                color={themes}
+                onPressIn={() => navigation.navigate('Cart')}
+            />
         </View>
     );
 };
