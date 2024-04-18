@@ -4,7 +4,7 @@ import CardAccount from '../../../components/card-user/CardAccount';
 import { Icon } from '@rneui/themed';
 import { ParamListBase, useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { fontStyles, screenStyles } from '../../../themes/Themes';
+import { cardStyles, flexStyles, fontStyles, screenStyles } from '../../../themes/Themes';
 import { MAIN_COLOR } from '../../../common/Common';
 import OrderList from '../../../components/order/OrderList';
 
@@ -50,6 +50,71 @@ const AccountScreen: React.FC<AccountScreenProps> = (props) => {
                         />
                     </View>
                     <OrderList />
+                </View>
+                <View
+                    style={{
+                        marginTop: 30,
+                        padding: 10,
+                        position: 'relative',
+                    }}
+                >
+                    <Text style={[fontStyles.textBold]}>Đánh giá sản phẩm</Text>
+                    <View style={{ position: 'absolute', right: 15, top: 0, zIndex: 1 }}>
+                        <Icon
+                            name="arrow-right"
+                            type="evilicon"
+                            size={30}
+                            color={MAIN_COLOR}
+                            //onPressIn={() => navigationStack.navigate('OrderScreen', { indexState: 0 })}
+                        />
+                    </View>
+                </View>
+                <View
+                    style={{
+                        marginTop: 30,
+                        padding: 10,
+                        position: 'relative',
+                    }}
+                >
+                    <Text style={[fontStyles.textBold]}>Quan tâm</Text>
+                    <View style={{ flexDirection: 'row', ...flexStyles.jCenter_alCenter }}>
+                        <View style={{ flex: 2, marginTop: 30, ...flexStyles.jCenter_alCenter }}>
+                            <View style={{ ...cardStyles.card3 }}>
+                                <Icon
+                                    name="eye"
+                                    type="font-awesome"
+                                    size={30}
+                                    color={MAIN_COLOR}
+                                    onPressIn={() => navigationStack.navigate('WatchedScreen')}
+                                />
+                            </View>
+                            <Text style={{ ...fontStyles.textSpecialBold }}>Đã xem</Text>
+                        </View>
+                        <View style={{ flex: 2, marginTop: 30, ...flexStyles.jCenter_alCenter }}>
+                            <View style={{ ...cardStyles.card3 }}>
+                                <Icon
+                                    name="heart"
+                                    type="font-awesome"
+                                    size={30}
+                                    color={MAIN_COLOR}
+                                    onPressIn={() => navigationStack.navigate('FavoriteScreen')}
+                                />
+                            </View>
+                            <Text style={{ ...fontStyles.textSpecialBold }}>Yêu thích</Text>
+                        </View>
+                        <View style={{ flex: 2, marginTop: 30, ...flexStyles.jCenter_alCenter }}>
+                            <View style={{ ...cardStyles.card3 }}>
+                                <Icon
+                                    name="warehouse"
+                                    type="font-awesome-5"
+                                    size={30}
+                                    color={MAIN_COLOR}
+                                    onPressIn={() => navigationStack.navigate('FollowScreen')}
+                                />
+                            </View>
+                            <Text style={{ ...fontStyles.textSpecialBold }}>Theo dõi</Text>
+                        </View>
+                    </View>
                 </View>
             </View>
         </>

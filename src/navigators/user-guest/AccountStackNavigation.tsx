@@ -6,7 +6,7 @@ import SettingScreen from '../../screen/user-guest/account/SettingScreen';
 import { fontStyles, headerStyles } from '../../themes/Themes';
 import { ParamListBase, useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import OrderScreen from '../../screen/user-guest/order/OrderScreen';
+import OrderScreen from '../../screen/user-guest/OrderScreen';
 import { Icon } from '@rneui/themed';
 
 const StackAccount = createNativeStackNavigator();

@@ -4,9 +4,13 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { fontStyles, headerStyles } from '../../themes/Themes';
 import TabNavigation from './TabNavigation';
-import CartScreen from '../../screen/user-guest/cart/CartScreen';
+import CartScreen from '../../screen/user-guest/CartScreen';
 import { Icon } from '@rneui/themed';
-import OrderScreen from '../../screen/user-guest/order/OrderScreen';
+import OrderScreen from '../../screen/user-guest/OrderScreen';
+import WatchedScreen from '../../screen/user-guest/WatchedScreen';
+import FavoriteScreen from '../../screen/user-guest/FavoriteScreen';
+import FollowScreen from '../../screen/user-guest/FollowScreen';
+import ValueSearchScreen from '../../screen/user-guest/ValueSearchScreen';
 
 interface RootNavigationProps {}
 const StackRoot = createNativeStackNavigator();
@@ -51,6 +55,70 @@ const RootNavigation: React.FC<RootNavigationProps> = (props) => {
                 component={OrderScreen}
                 options={{
                     headerTitle: 'Đơn hàng',
+                    headerBackTitleVisible: false,
+                    headerLeft: () => (
+                        <Icon
+                            name="arrow-left"
+                            type="font-awesome"
+                            color={'white'}
+                            onPressIn={() => navigationStack.navigate('DefaultScreen')}
+                        />
+                    ),
+                }}
+            />
+            <StackRoot.Screen
+                name="FollowScreen"
+                component={FollowScreen}
+                options={{
+                    headerTitle: 'Danh sách theo dõi',
+                    headerBackTitleVisible: false,
+                    headerLeft: () => (
+                        <Icon
+                            name="arrow-left"
+                            type="font-awesome"
+                            color={'white'}
+                            onPressIn={() => navigationStack.navigate('DefaultScreen')}
+                        />
+                    ),
+                }}
+            />
+            <StackRoot.Screen
+                name="FavoriteScreen"
+                component={FavoriteScreen}
+                options={{
+                    headerTitle: 'Sản phẩm yêu thích',
+                    headerBackTitleVisible: false,
+                    headerLeft: () => (
+                        <Icon
+                            name="arrow-left"
+                            type="font-awesome"
+                            color={'white'}
+                            onPressIn={() => navigationStack.navigate('DefaultScreen')}
+                        />
+                    ),
+                }}
+            />
+            <StackRoot.Screen
+                name="WatchedScreen"
+                component={WatchedScreen}
+                options={{
+                    headerTitle: 'Sản phẩm đã xem',
+                    headerBackTitleVisible: false,
+                    headerLeft: () => (
+                        <Icon
+                            name="arrow-left"
+                            type="font-awesome"
+                            color={'white'}
+                            onPressIn={() => navigationStack.navigate('DefaultScreen')}
+                        />
+                    ),
+                }}
+            />
+            <StackRoot.Screen
+                name="ValueSearchScreen"
+                component={ValueSearchScreen}
+                options={{
+                    headerTitle: 'Sản phẩm đã xem',
                     headerBackTitleVisible: false,
                     headerLeft: () => (
                         <Icon

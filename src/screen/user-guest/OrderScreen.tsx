@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { Tab, TabView, Input, Text } from '@rneui/themed';
-import OrderProcessing from '../../../components/order/OrderProcessing';
-import OrderDelivery from '../../../components/order/OrderDelivery';
-import OrderCancel from '../../../components/order/OrderCancel';
-import OrderSuccess from '../../../components/order/OrderSuccess';
-import { indicatorStyles, inputStyles, tabStyles } from '../../../themes/Themes';
-import { filterInput } from '../../../untils/Logic';
-import { MAIN_COLOR } from '../../../common/Common';
+import OrderProcessing from '../../components/order/OrderProcessing';
+import OrderDelivery from '../../components/order/OrderDelivery';
+import OrderCancel from '../../components/order/OrderCancel';
+import OrderSuccess from '../../components/order/OrderSuccess';
+import { indicatorStyles, inputStyles, tabStyles } from '../../themes/Themes';
+import { filterInput } from '../../untils/Logic';
+import { MAIN_COLOR } from '../../common/Common';
 import { useRoute } from '@react-navigation/native';
 import { RouteProp } from '@react-navigation/native';
 

@@ -4,8 +4,8 @@ import { Icon } from '@rneui/themed';
 import React from 'react';
 import { Text, View } from 'react-native';
 import { useSelector, useStore } from 'react-redux';
-import { ReducerProps } from '../../../reducers/ReducersProps';
-import { screenStyles } from '../../../themes/Themes';
+import { ReducerProps } from '../../reducers/ReducersProps';
+import { screenStyles } from '../../themes/Themes';
 
 interface CartScreenProps {}
 

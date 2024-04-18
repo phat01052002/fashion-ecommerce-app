@@ -39,6 +39,12 @@ export const inputStyles = StyleSheet.create({
         borderColor: COLOR_BORDER_ELEMENTS,
     },
 });
+export const borderStyles = StyleSheet.create({
+    lineBorder1: {
+        borderWidth: 2,
+        borderColor: 'black',
+    },
+});
 export const fontStyles = StyleSheet.create({
     textTitle: {
         color: '#000',
@@ -91,6 +97,15 @@ export const cardStyles = StyleSheet.create({
         margin: 7,
         borderRadius: 50,
         width: '60%',
+        aspectRatio: 1 / 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    card3: {
+        backgroundColor: COLOR_CARD_ELEMENTS,
+        margin: 7,
+        borderRadius: 50,
+        width: '50%',
         aspectRatio: 1 / 1,
         justifyContent: 'center',
         alignItems: 'center',

@@ -2,14 +2,13 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { Avatar, Icon } from '@rneui/themed';
 import { COLOR_BORDER_ELEMENTS, MAIN_COLOR } from '../../common/Common';
-import { boxShadowStyles, cardStyles, flexStyles, fontStyles } from '../../themes/Themes';
+import { borderStyles, boxShadowStyles, cardStyles, flexStyles, fontStyles } from '../../themes/Themes';
 import { ParamListBase, useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 interface CardAccountProps {}
 
 const CardAccount: React.FC<CardAccountProps> = (props) => {
     const navigationStack = useNavigation<NativeStackNavigationProp<ParamListBase>>();
-
     return (
         <View
             style={{
@@ -45,7 +44,7 @@ const CardAccount: React.FC<CardAccountProps> = (props) => {
                             size={64}
                             rounded
                             icon={{ name: 'user', type: 'font-awesome' }}
-                            containerStyle={{ backgroundColor: MAIN_COLOR }}
+                            containerStyle={{ backgroundColor: MAIN_COLOR, ...borderStyles.lineBorder1 }}
                         />
                     </View>
                     <View
