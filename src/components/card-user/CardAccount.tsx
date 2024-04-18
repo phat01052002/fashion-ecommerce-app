@@ -1,12 +1,15 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import { Avatar } from '@rneui/themed';
+import { Avatar, Icon } from '@rneui/themed';
 import { COLOR_BORDER_ELEMENTS, MAIN_COLOR } from '../../common/Common';
 import { boxShadowStyles, cardStyles, flexStyles, fontStyles } from '../../themes/Themes';
-
+import { ParamListBase, useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 interface CardAccountProps {}
 
 const CardAccount: React.FC<CardAccountProps> = (props) => {
+    const navigationStack = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+
     return (
         <View
             style={{
@@ -51,7 +54,19 @@ const CardAccount: React.FC<CardAccountProps> = (props) => {
                             ...flexStyles.jCenter_alStart,
                         }}
                     >
-                        <Text style={[fontStyles.textSpecialTitle]}>Tên người dùng </Text>
+                        <Text
+                            style={[fontStyles.textSpecialTitle]}
+                            onPress={() => navigationStack.navigate('InfoUser')}
+                        >
+                            Tên người dùng {'     '}
+                            <Icon
+                                name="pen"
+                                type="font-awesome-5"
+                                size={26}
+                                color="#517fa4"
+                                onPressIn={() => navigationStack.navigate('InfoUser')}
+                            />
+                        </Text>
                     </View>
                 </View>
                 <View

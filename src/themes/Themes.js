@@ -1,11 +1,37 @@
 import { StyleSheet } from 'react-native';
-import { COLOR_BORDER_ELEMENTS, MAIN_COLOR } from '../common/Common';
+import { COLOR_BORDER_ELEMENTS, COLOR_CARD_ELEMENTS, COLOR_INDACATOR, MAIN_COLOR } from '../common/Common';
 
 export const screenStyles = StyleSheet.create({
     container: {
         width: '100%',
         height: '100%',
         backgroundColor: 'white',
+    },
+});
+export const tabStyles = StyleSheet.create({
+    title: {
+        color: 'gray',
+        fontFamily: 'Inter-SemiBoldItalic',
+        fontWeight: '600',
+    },
+    header: {
+        backgroundColor: 'white',
+    },
+});
+export const indicatorStyles = StyleSheet.create({
+    indicator: {
+        backgroundColor: COLOR_INDACATOR,
+        height: 3,
+    },
+});
+export const inputStyles = StyleSheet.create({
+    input: {
+        height: 40,
+        borderWidth: 1,
+        borderRadius: 10,
+        paddingStart: 10,
+        backgroundColor: 'white',
+        borderColor: COLOR_BORDER_ELEMENTS,
     },
 });
 export const fontStyles = StyleSheet.create({
@@ -43,12 +69,26 @@ export const fontStyles = StyleSheet.create({
         fontFamily: 'Inter-SemiBoldItalic',
         fontWeight: '800',
     },
+    textHeader: {
+        color: MAIN_COLOR,
+        fontFamily: 'Inter-SemiBoldItalic',
+        fontWeight: '800',
+    },
 });
 export const cardStyles = StyleSheet.create({
     card1: {
-        backgroundColor: COLOR_BORDER_ELEMENTS,
+        backgroundColor: COLOR_CARD_ELEMENTS,
         margin: 7,
         borderRadius: 10,
+    },
+    card2: {
+        backgroundColor: COLOR_CARD_ELEMENTS,
+        margin: 7,
+        borderRadius: 50,
+        width: '60%',
+        aspectRatio: 1 / 1,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 });
 

@@ -1,17 +1,24 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { MAIN_COLOR } from '../../common/Common';
 import AccountScreen from '../../screen/user-guest/account/AccountScreen';
 import InfoUserScreen from '../../screen/user-guest/account/InfoUserScreen';
 import SettingScreen from '../../screen/user-guest/account/SettingScreen';
 import { fontStyles } from '../../themes/Themes';
+import { ParamListBase, useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import OrderScreen from '../../screen/user-guest/account/OrderScreen';
 
 const Stack = createNativeStackNavigator();
 const IndexAccount: React.FC = () => {
+    const navigationStack = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+
     return (
-        <Stack.Navigator screenOptions={{
-            headerTitleStyle:fontStyles.textSpecialBold
-        }}>
+        <Stack.Navigator
+            initialRouteName="Account"
+            screenOptions={{
+                headerTitleStyle: fontStyles.textHeader,
+            }}
+        >
             <Stack.Screen
                 name="Account"
                 component={AccountScreen}
@@ -24,7 +31,6 @@ const IndexAccount: React.FC = () => {
                 component={SettingScreen}
                 options={{
                     headerTitle: 'Thiết lập tài khoản',
-                    headerTintColor: MAIN_COLOR,
                     headerBackTitleVisible: false,
                 }}
             />
@@ -33,7 +39,14 @@ const IndexAccount: React.FC = () => {
                 component={InfoUserScreen}
                 options={{
                     headerTitle: 'Thông tin người dùng',
-                    headerTintColor: MAIN_COLOR,
+                    headerBackTitleVisible: false,
+                }}
+            />
+            <Stack.Screen
+                name="Order"
+                component={OrderScreen}
+                options={{
+                    headerTitle: 'Đơn hàng',
                     headerBackTitleVisible: false,
                 }}
             />

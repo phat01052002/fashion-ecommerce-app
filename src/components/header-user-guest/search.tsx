@@ -8,14 +8,14 @@ import { Input } from '@rneui/themed';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ParamListBase, useNavigation } from '@react-navigation/native';
 import { COLOR_BORDER_ELEMENTS, MAIN_COLOR } from '../../common/Common';
-import { fontStyles } from '../../themes/Themes';
+import { fontStyles, inputStyles } from '../../themes/Themes';
 interface SearchProps {
     themes: string;
     isSearch: boolean;
 }
 const Search: React.FC<SearchProps> = (props) => {
     const { themes, isSearch } = props;
-    const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+    const navigationStack = useNavigation<NativeStackNavigationProp<ParamListBase>>();
     const [input, setInput] = useState<string>('');
     return (
         <View
@@ -33,12 +33,7 @@ const Search: React.FC<SearchProps> = (props) => {
                     paddingStart: 10,
                 }}
                 inputContainerStyle={{
-                    height: 40,
-                    borderWidth: 1,
-                    borderRadius: 10,
-                    paddingStart: 10,
-                    backgroundColor: 'white',
-                    borderColor: COLOR_BORDER_ELEMENTS,
+                    ...inputStyles.input
                 }}
                 value={input}
                 disabled={!isSearch}
@@ -50,12 +45,12 @@ const Search: React.FC<SearchProps> = (props) => {
                     color: MAIN_COLOR,
                     size: 20,
                     onPressIn: () => {
-                        navigation.navigate('Search');
+                        navigationStack.navigate('Search');
                     },
                 }}
                 onChangeText={(text) => filterInput(text, setInput)}
                 onPressIn={() => {
-                    navigation.navigate('Search');
+                    navigationStack.navigate('Search');
                 }}
             />
         </View>

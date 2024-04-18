@@ -8,7 +8,7 @@ interface CartProps {
 }
 const Cart: React.FC<CartProps> = (props) => {
     const { themes } = props;
-    const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+    const navigationStack = useNavigation<NativeStackNavigationProp<ParamListBase>>();
     return (
         <View
             style={{
@@ -22,7 +22,7 @@ const Cart: React.FC<CartProps> = (props) => {
                 type="font-awesome"
                 size={26}
                 color={themes}
-                onPressIn={() => navigation.navigate('Cart')}
+                onPressIn={() => navigationStack.navigate('Cart')}
             />
         </View>
     );

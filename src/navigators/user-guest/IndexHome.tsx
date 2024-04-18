@@ -11,7 +11,7 @@ const IndexHome: React.FC = () => {
     return (
         <Stack.Navigator
             screenOptions={{
-                headerTitleStyle: fontStyles.textSpecialBold,
+                headerTitleStyle: fontStyles.textHeader,
             }}
         >
             <Stack.Screen name="Home" component={HomeScreen} options={{ header: () => null }} />

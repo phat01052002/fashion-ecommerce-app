@@ -12,7 +12,7 @@ interface HeaderHomeProps {
 }
 const HeaderHome: React.FC<HeaderHomeProps> = (props) => {
     const { themes, isSearch } = props;
-    const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+    const navigationStack = useNavigation<NativeStackNavigationProp<ParamListBase>>();
 
     const stylesHeader = StyleSheet.create({
         container: {
@@ -41,7 +41,7 @@ const HeaderHome: React.FC<HeaderHomeProps> = (props) => {
                         type="font-awesome"
                         size={26}
                         color={themes ? 'white' : MAIN_COLOR}
-                        onPressIn={() => navigation.navigate('Home')}
+                        onPressIn={() => navigationStack.navigate('Home')}
                     />
 
                     <View
