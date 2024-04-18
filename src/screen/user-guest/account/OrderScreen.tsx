@@ -7,12 +7,21 @@ import OrderSuccess from '../../../components/order/OrderSuccess';
 import { indicatorStyles, inputStyles, tabStyles } from '../../../themes/Themes';
 import { filterInput } from '../../../untils/Logic';
 import { MAIN_COLOR } from '../../../common/Common';
-import { useRoute, RouteProp } from '@react-navigation/native';
+import { useRoute } from '@react-navigation/native';
+import { NavigationContainer, RouteProp } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
+// type data of param
+type RootStackParamList = {
+    Home: undefined;
+    Detail: { indexState: number };
+};
+// type data of route
+type DetailScreenRouteProp = RouteProp<RootStackParamList, 'Detail'>;
 interface OrderScreenProps {}
 
 const OrderScreen: React.FC<OrderScreenProps> = (props) => {
-    const route = useRoute();
+    const route = useRoute<DetailScreenRouteProp>();
     const { indexState } = route.params;
     const [index, setIndex] = React.useState<number>(indexState);
     const [inputOrder, setInputOrder] = useState<string>('');
