@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { MAIN_COLOR } from '../../../common/Common';
-import HeaderHome from '../../../components/header-user-guest/HeaderHome';
+import HeaderHome from '../../../components/header-user/HeaderHome';
 import { screenStyles } from '../../../themes/Themes';
 
 const SearchScreen: React.FC = (props) => {

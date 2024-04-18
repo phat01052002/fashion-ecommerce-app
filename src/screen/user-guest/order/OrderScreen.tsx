@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { Tab, TabView, Input, Text } from '@rneui/themed';
 import OrderProcessing from '../../../components/order/OrderProcessing';
 import OrderDelivery from '../../../components/order/OrderDelivery';
@@ -8,16 +8,15 @@ import { indicatorStyles, inputStyles, tabStyles } from '../../../themes/Themes'
 import { filterInput } from '../../../untils/Logic';
 import { MAIN_COLOR } from '../../../common/Common';
 import { useRoute } from '@react-navigation/native';
-import { NavigationContainer, RouteProp } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RouteProp } from '@react-navigation/native';
 
 // type data of param
 type RootStackParamList = {
     Home: undefined;
-    Detail: { indexState: number };
+    OrderScreenState: { indexState: number };
 };
 // type data of route
-type DetailScreenRouteProp = RouteProp<RootStackParamList, 'Detail'>;
+type DetailScreenRouteProp = RouteProp<RootStackParamList, 'OrderScreenState'>;
 interface OrderScreenProps {}
 
 const OrderScreen: React.FC<OrderScreenProps> = (props) => {
@@ -25,7 +24,7 @@ const OrderScreen: React.FC<OrderScreenProps> = (props) => {
     const { indexState } = route.params;
     const [index, setIndex] = React.useState<number>(indexState);
     const [inputOrder, setInputOrder] = useState<string>('');
-
+    /// when indexState change, call setIndex
     return (
         <>
             <Input
@@ -43,21 +42,18 @@ const OrderScreen: React.FC<OrderScreenProps> = (props) => {
                 }}
                 onChangeText={(text) => filterInput(text, setInputOrder)}
             />
+
             <Tab
                 value={index}
-                onChange={setIndex}
-                indicatorStyle={{
-                    ...indicatorStyles.indicator,
-                }}
-                buttonStyle={{
-                    ...tabStyles.header,
-                }}
+                onChange={(value) => setIndex(value)}
+                disableIndicator
                 scrollable={true}
                 style={{
                     ...tabStyles.header,
                 }}
                 containerStyle={(active) => ({
-                    backgroundColor: active ? MAIN_COLOR : undefined,
+                    borderBottomWidth: active ? 3 : undefined,
+                    borderBottomColor: active ? MAIN_COLOR : undefined,
                 })}
             >
                 <Tab.Item title="Đang xử lý" titleStyle={{ ...tabStyles.title }} />
@@ -65,27 +61,12 @@ const OrderScreen: React.FC<OrderScreenProps> = (props) => {
                 <Tab.Item title="Đã giao" titleStyle={{ ...tabStyles.title }} />
                 <Tab.Item title="Đã huỷ" titleStyle={{ ...tabStyles.title }} />
             </Tab>
-            <TabView
-                value={index}
-                onChange={setIndex}
-                animationType="spring"
-                containerStyle={{
-                    width: '100%',
-                    height: '100%',
-                }}
-            >
-                <TabView.Item style={{ width: '100%' }}>
-                    <OrderProcessing />
-                </TabView.Item>
-                <TabView.Item style={{ width: '100%' }}>
-                    <OrderDelivery />
-                </TabView.Item>
-                <TabView.Item style={{ width: '100%' }}>
-                    <OrderSuccess />
-                </TabView.Item>
-                <TabView.Item style={{ width: '100%' }}>
-                    <OrderCancel />
-                </TabView.Item>
+            <TabView value={index} onChange={setIndex} animationType="spring">
+                {/* Set the index value to make sure no screen comes before screenOrder when using navigation and minimize screen loading speed*/}
+                <TabView.Item>{index == 0 ? <OrderProcessing /> : null}</TabView.Item>
+                <TabView.Item>{index == 1 ? <OrderDelivery /> : null}</TabView.Item>
+                <TabView.Item>{index == 2 ? <OrderSuccess /> : null}</TabView.Item>
+                <TabView.Item>{index == 3 ? <OrderCancel /> : null}</TabView.Item>
             </TabView>
         </>
     );

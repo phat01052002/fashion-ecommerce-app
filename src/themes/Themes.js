@@ -8,10 +8,15 @@ export const screenStyles = StyleSheet.create({
         backgroundColor: 'white',
     },
 });
+export const headerStyles = StyleSheet.create({
+    header: {
+        backgroundColor: MAIN_COLOR,
+    },
+});
 export const tabStyles = StyleSheet.create({
     title: {
         color: 'gray',
-        fontFamily: 'Inter-SemiBoldItalic',
+        //fontFamily: 'Inter-SemiBoldItalic',
         fontWeight: '600',
     },
     header: {
@@ -37,41 +42,41 @@ export const inputStyles = StyleSheet.create({
 export const fontStyles = StyleSheet.create({
     textTitle: {
         color: '#000',
-        fontFamily: 'Inter-SemiBoldItalic',
+        //fontFamily: 'Inter-SemiBoldItalic',
         fontSize: 20,
     },
     textBold: {
         color: '#000',
-        fontFamily: 'Inter-SemiBoldItalic',
+        //fontFamily: 'Inter-SemiBoldItalic',
         fontWeight: '800',
     },
 
     text: {
-        fontFamily: 'Inter-SemiBoldItalic',
+        //fontFamily: 'Inter-SemiBoldItalic',
     },
     textSpecialTitle: {
         color: MAIN_COLOR,
-        fontFamily: 'Inter-SemiBoldItalic',
+        //fontFamily: 'Inter-SemiBoldItalic',
         fontSize: 20,
     },
     textSpecialBold: {
         color: MAIN_COLOR,
-        fontFamily: 'Inter-SemiBoldItalic',
+        //fontFamily: 'Inter-SemiBoldItalic',
         fontWeight: '800',
         fontStyle: 'italic',
     },
 
     textSpecial: {
         color: MAIN_COLOR,
-        fontFamily: 'Inter-SemiBoldItalic',
+        //fontFamily: 'Inter-SemiBoldItalic',
     },
     textNavigation: {
-        fontFamily: 'Inter-SemiBoldItalic',
+        //fontFamily: 'Inter-SemiBoldItalic',
         fontWeight: '800',
     },
     textHeader: {
-        color: MAIN_COLOR,
-        fontFamily: 'Inter-SemiBoldItalic',
+        color: 'white',
+        //fontFamily: 'Inter-SemiBoldItalic',
         fontWeight: '800',
     },
 });

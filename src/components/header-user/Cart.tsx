@@ -22,7 +22,7 @@ const Cart: React.FC<CartProps> = (props) => {
                 type="font-awesome"
                 size={26}
                 color={themes}
-                onPressIn={() => navigationStack.navigate('Cart')}
+                onPressIn={() => navigationStack.navigate('CartScreen', { backIndex: 0 })}
             />
         </View>
     );

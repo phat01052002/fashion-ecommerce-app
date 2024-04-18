@@ -56,7 +56,7 @@ const CardAccount: React.FC<CardAccountProps> = (props) => {
                     >
                         <Text
                             style={[fontStyles.textSpecialTitle]}
-                            onPress={() => navigationStack.navigate('InfoUser')}
+                            onPress={() => navigationStack.navigate('InfoUserScreen')}
                         >
                             Tên người dùng {'     '}
                             <Icon
@@ -64,7 +64,7 @@ const CardAccount: React.FC<CardAccountProps> = (props) => {
                                 type="font-awesome-5"
                                 size={26}
                                 color="#517fa4"
-                                onPressIn={() => navigationStack.navigate('InfoUser')}
+                                onPressIn={() => navigationStack.navigate('InfoUserScreen')}
                             />
                         </Text>
                     </View>

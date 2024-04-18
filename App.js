@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import UserGuestView from './src/navigators/user-guest/IndexUserGuest';
+import RootNavigation from './src/navigators/user-guest/RootNavigation';
 import myReducer from './src/reducers/Reducers';
 export default function App() {
     const store = createStore(myReducer);
@@ -12,7 +12,7 @@ export default function App() {
             <ThemeProvider>
                 <NavigationContainer>
                     <Provider store={store}>
-                        <UserGuestView />
+                        <RootNavigation />
                         <StatusBar />
                     </Provider>
                 </NavigationContainer>

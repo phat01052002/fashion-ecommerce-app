@@ -8,7 +8,6 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 interface OrderProps {}
 const OrderList: React.FC<OrderProps> = (props) => {
     const navigationStack = useNavigation<NativeStackNavigationProp<ParamListBase>>();
-
     return (
         <View
             style={{
@@ -27,7 +26,7 @@ const OrderList: React.FC<OrderProps> = (props) => {
                     name="archive"
                     type="font-awesome"
                     color={MAIN_COLOR}
-                    onPressIn={() => navigationStack.navigate('Order', { indexState: 0 })}
+                    onPressIn={() => navigationStack.navigate('OrderScreen', { indexState: 0 })}
                 />
                 <View style={{ width: '100%', ...flexStyles.jCenter_alCenter }}>
                     <Text style={{ ...fontStyles.text, textAlign: 'center' }}>Đang xử lý</Text>
@@ -44,7 +43,7 @@ const OrderList: React.FC<OrderProps> = (props) => {
                     name="truck"
                     type="font-awesome"
                     color={MAIN_COLOR}
-                    onPressIn={() => navigationStack.navigate('Order', { indexState: 1 })}
+                    onPressIn={() => navigationStack.navigate('OrderScreen', { indexState: 1 })}
                 />
                 <View style={{ width: '100%', ...flexStyles.jCenter_alCenter }}>
                     <Text style={{ ...fontStyles.text, textAlign: 'center' }}>Đang vận chuyển</Text>
@@ -61,7 +60,7 @@ const OrderList: React.FC<OrderProps> = (props) => {
                     name="check-square"
                     type="font-awesome"
                     color={MAIN_COLOR}
-                    onPressIn={() => navigationStack.navigate('Order', { indexState: 2 })}
+                    onPressIn={() => navigationStack.navigate('OrderScreen', { indexState: 2 })}
                 />
                 <View style={{ width: '100%', ...flexStyles.jCenter_alCenter }}>
                     <Text style={{ ...fontStyles.text, textAlign: 'center' }}>Đã giao</Text>
@@ -78,7 +77,7 @@ const OrderList: React.FC<OrderProps> = (props) => {
                     name="ban"
                     type="font-awesome"
                     color={MAIN_COLOR}
-                    onPressIn={() => navigationStack.navigate('Order', { indexState: 3 })}
+                    onPressIn={() => navigationStack.navigate('OrderScreen', { indexState: 3 })}
                 />
                 <View style={{ width: '100%', ...flexStyles.jCenter_alCenter }}>
                     <Text style={{ ...fontStyles.text, textAlign: 'center' }}>Đã huỷ</Text>

@@ -41,7 +41,7 @@ const HeaderHome: React.FC<HeaderHomeProps> = (props) => {
                         type="font-awesome"
                         size={26}
                         color={themes ? 'white' : MAIN_COLOR}
-                        onPressIn={() => navigationStack.navigate('Home')}
+                        onPressIn={() => navigationStack.navigate('HomeScreen')}
                     />
 
                     <View

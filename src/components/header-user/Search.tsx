@@ -1,13 +1,10 @@
-import { padding } from '@mui/system';
 import React, { useState } from 'react';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-
 import { filterInput } from '../../untils/Logic';
 import { View } from 'react-native';
 import { Input } from '@rneui/themed';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ParamListBase, useNavigation } from '@react-navigation/native';
-import { COLOR_BORDER_ELEMENTS, MAIN_COLOR } from '../../common/Common';
+import { MAIN_COLOR } from '../../common/Common';
 import { fontStyles, inputStyles } from '../../themes/Themes';
 interface SearchProps {
     themes: string;
@@ -33,7 +30,7 @@ const Search: React.FC<SearchProps> = (props) => {
                     paddingStart: 10,
                 }}
                 inputContainerStyle={{
-                    ...inputStyles.input
+                    ...inputStyles.input,
                 }}
                 value={input}
                 disabled={!isSearch}
@@ -45,12 +42,12 @@ const Search: React.FC<SearchProps> = (props) => {
                     color: MAIN_COLOR,
                     size: 20,
                     onPressIn: () => {
-                        navigationStack.navigate('Search');
+                        navigationStack.navigate('SearchScreen');
                     },
                 }}
                 onChangeText={(text) => filterInput(text, setInput)}
                 onPressIn={() => {
-                    navigationStack.navigate('Search');
+                    navigationStack.navigate('SearchScreen');
                 }}
             />
         </View>
