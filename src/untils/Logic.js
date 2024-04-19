@@ -24,3 +24,6 @@ export const filterEmail = (event, setValue) => {
     } else {
     }
 };
+export const toggleDialog = (setIsVisiableDialog) => {
+    setIsVisiableDialog((prev) => !prev);
+};

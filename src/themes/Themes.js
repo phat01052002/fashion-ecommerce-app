@@ -7,7 +7,14 @@ export const screenStyles = StyleSheet.create({
         height: '100%',
         backgroundColor: 'white',
     },
+   
 });
+export const viewStyles=StyleSheet.create({
+    fullWidthFullHeight: {
+        width: '100%',
+        height: '100%',
+    },
+})
 export const headerStyles = StyleSheet.create({
     header: {
         backgroundColor: MAIN_COLOR,
