@@ -1,5 +1,6 @@
 const initialState = {
     numberCart: 0,
+    role: 'guest',
 };
 const myReducer = (state = initialState, action) => {
     switch (action.type) {

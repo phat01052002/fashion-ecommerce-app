@@ -11,6 +11,7 @@ import FavoriteScreen from '../../screen/user-guest/FavoriteScreen';
 import FollowScreen from '../../screen/user-guest/FollowScreen';
 import ValueSearchScreen from '../../screen/user-guest/ValueSearchScreen';
 import OrderTopTabsNavigation from './OrderTopTabsNavigation';
+import ShopTabsNavigation from '../shop/ShopTabsNavigation';
 
 interface RootNavigationProps {}
 const StackRoot = createNativeStackNavigator();
@@ -32,6 +33,20 @@ const RootNavigation: React.FC<RootNavigationProps> = (props) => {
                 component={TabNavigation}
                 options={{
                     header: () => null,
+                }}
+            />
+            <StackRoot.Screen
+                name="Shop"
+                component={ShopTabsNavigation}
+                options={{
+                    headerLeft: () => (
+                        <Icon
+                            name="arrow-left"
+                            type="font-awesome"
+                            color={'white'}
+                            onPressIn={() => navigationStack.navigate('DefaultScreen')}
+                        />
+                    ),
                 }}
             />
             <StackRoot.Screen

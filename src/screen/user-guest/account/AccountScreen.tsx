@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image, Text } from 'react-native';
+import { View, Image, Text, ScrollView } from 'react-native';
 import CardAccount from '../../../components/card-user/CardAccount';
 import { Icon } from '@rneui/themed';
 import { ParamListBase, useNavigation } from '@react-navigation/native';
@@ -7,12 +7,17 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { cardStyles, flexStyles, fontStyles, screenStyles } from '../../../themes/Themes';
 import { MAIN_COLOR } from '../../../common/Common';
 import OrderList from '../../../components/order/OrderList';
+import { useSelector, useStore } from 'react-redux';
+import { ReducerProps } from '../../../reducers/ReducersProps';
 
 interface AccountScreenProps {}
 const AccountScreen: React.FC<AccountScreenProps> = (props) => {
     const navigationStack = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+    const store = useStore();
+    const role = useSelector((state: ReducerProps) => state.role);
+
     return (
-        <>
+        <ScrollView>
             <View style={[screenStyles.container]}>
                 <Image source={require('../../../../assets/setting-header.png')} />
                 <View
@@ -116,8 +121,31 @@ const AccountScreen: React.FC<AccountScreenProps> = (props) => {
                         </View>
                     </View>
                 </View>
+                <View
+                    style={{
+                        marginTop: 30,
+                        padding: 10,
+                        position: 'relative',
+                    }}
+                >
+                    <Text style={[fontStyles.textBold]}>Cửa hàng của bạn</Text>
+                    <View style={{ position: 'absolute', right: 15, top: 0, zIndex: 1 }}>
+                        <Icon
+                            name="store"
+                            type="font-awesome-5"
+                            size={30}
+                            color={MAIN_COLOR}
+                            onPressIn={() => {
+                                navigationStack.navigate('Shop');
+                            }}
+                        />
+                    </View>
+                    <View style={{ ...flexStyles.jCenter_alCenter }}>
+                        <Image source={require('../../../../assets/ShopGif.gif')} style={{ marginTop: 30 }} />
+                    </View>
+                </View>
             </View>
-        </>
+        </ScrollView>
     );
 };
 export default AccountScreen;
