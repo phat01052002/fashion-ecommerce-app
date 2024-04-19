@@ -26,7 +26,7 @@ const OrderList: React.FC<OrderProps> = (props) => {
                     name="archive"
                     type="font-awesome"
                     color={MAIN_COLOR}
-                    onPressIn={() => navigationStack.navigate('OrderScreen', { indexState: 0 })}
+                    onPressIn={() => navigationStack.navigate('OrderScreen', { initialRouteName: 'OrderProcessing' })}
                 />
                 <View style={{ width: '100%', ...flexStyles.jCenter_alCenter }}>
                     <Text style={{ ...fontStyles.text, textAlign: 'center' }}>Đang xử lý</Text>
@@ -43,7 +43,7 @@ const OrderList: React.FC<OrderProps> = (props) => {
                     name="truck"
                     type="font-awesome"
                     color={MAIN_COLOR}
-                    onPressIn={() => navigationStack.navigate('OrderScreen', { indexState: 1 })}
+                    onPressIn={() => navigationStack.navigate('OrderScreen', { initialRouteName: 'OrderDelivery' })}
                 />
                 <View style={{ width: '100%', ...flexStyles.jCenter_alCenter }}>
                     <Text style={{ ...fontStyles.text, textAlign: 'center' }}>Đang vận chuyển</Text>
@@ -60,7 +60,7 @@ const OrderList: React.FC<OrderProps> = (props) => {
                     name="check-square"
                     type="font-awesome"
                     color={MAIN_COLOR}
-                    onPressIn={() => navigationStack.navigate('OrderScreen', { indexState: 2 })}
+                    onPressIn={() => navigationStack.navigate('OrderScreen', { initialRouteName: 'OrderSuccess' })}
                 />
                 <View style={{ width: '100%', ...flexStyles.jCenter_alCenter }}>
                     <Text style={{ ...fontStyles.text, textAlign: 'center' }}>Đã giao</Text>
@@ -77,7 +77,7 @@ const OrderList: React.FC<OrderProps> = (props) => {
                     name="ban"
                     type="font-awesome"
                     color={MAIN_COLOR}
-                    onPressIn={() => navigationStack.navigate('OrderScreen', { indexState: 3 })}
+                    onPressIn={() => navigationStack.navigate('OrderScreen', { initialRouteName: 'OrderCancel' })}
                 />
                 <View style={{ width: '100%', ...flexStyles.jCenter_alCenter }}>
                     <Text style={{ ...fontStyles.text, textAlign: 'center' }}>Đã huỷ</Text>

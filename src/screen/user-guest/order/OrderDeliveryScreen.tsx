@@ -1,13 +1,12 @@
 import { Skeleton } from '@rneui/themed';
 import React, { useEffect, useState } from 'react';
 import { View, Image, Dimensions, ScrollView, Text } from 'react-native';
-import { fontStyles } from '../../themes/Themes';
-
-interface OrderProcessingProps {}
-const OrderProcessing: React.FC<OrderProcessingProps> = (props) => {
-    const [listOrderProcessing, setListOrderProcessing] = useState([]);
+import SkeletonProductList from '../../../components/skeleton/SkeletonProductList';
+import { flexStyles, fontStyles, screenStyles } from '../../../themes/Themes';
+interface OrderDeliveryProps {}
+const OrderDelivery: React.FC<OrderDeliveryProps> = (props) => {
+    const [listOrderDelivery, setListOrderDelivery] = useState([]);
     const [isLoading, setIsLoading] = useState<Boolean>(true);
-
     //
     const [windowWidth, setWindowWidth] = useState(Dimensions.get('window').width);
     //
@@ -23,13 +22,15 @@ const OrderProcessing: React.FC<OrderProcessingProps> = (props) => {
     return (
         <>
             {isLoading ? (
-                <Skeleton animation="pulse" width={windowWidth / 1.1} height={300} style={{ marginTop: 20 }} />
-            ) : listOrderProcessing.length > 0 ? (
+                <ScrollView>
+                          <SkeletonProductList />
+                </ScrollView>
+            ) : listOrderDelivery.length > 0 ? (
                 <View style={{}}></View>
             ) : (
-                <View style={{ alignItems: 'center' }}>
+                <View style={{ ...screenStyles.container, ...flexStyles.jCenter_alCenter }}>
                     <Image
-                        source={require('../../../assets/empty-order.png')}
+                        source={require('../../../../assets/empty-order.png')}
                         resizeMode="contain"
                         style={{ marginTop: 20 }}
                     />
@@ -39,4 +40,4 @@ const OrderProcessing: React.FC<OrderProcessingProps> = (props) => {
         </>
     );
 };
-export default OrderProcessing;
+export default OrderDelivery;

@@ -2,6 +2,7 @@ import { Skeleton } from '@rneui/themed';
 import React, { useEffect, useState } from 'react';
 import { Image } from 'react-native';
 import { Dimensions, ScrollView, Text, View } from 'react-native';
+import SkeletonCommon from '../../components/skeleton/SkeletonCommon';
 import { flexStyles, fontStyles, screenStyles } from '../../themes/Themes';
 interface FollowScreenProps {}
 const FollowScreen: React.FC<FollowScreenProps> = (props) => {
@@ -20,11 +21,7 @@ const FollowScreen: React.FC<FollowScreenProps> = (props) => {
         <>
             {isLoading ? (
                 <ScrollView>
-                    <View style={{ ...flexStyles.jCenter_alCenter, ...screenStyles.container }}>
-                        <Skeleton animation="pulse" width={windowWidth / 1.1} height={300} style={{ marginTop: 20 }} />
-                        <Skeleton animation="pulse" width={windowWidth / 1.1} height={300} style={{ marginTop: 20 }} />
-                        <Skeleton animation="pulse" width={windowWidth / 1.1} height={300} style={{ marginTop: 20 }} />
-                    </View>
+                    <SkeletonCommon />
                 </ScrollView>
             ) : (
                 <>
@@ -33,13 +30,13 @@ const FollowScreen: React.FC<FollowScreenProps> = (props) => {
                             <Text>Notification Screen</Text>
                         </View>
                     ) : (
-                        <View style={{ ...flexStyles.jCenter_alCenter }}>
+                        <View style={{ ...flexStyles.jCenter_alCenter, ...screenStyles.container }}>
                             <Image
-                                source={require('../../../assets/empty-notification')}
+                                source={require('../../../assets/empty-notification.png')}
                                 resizeMode="contain"
-                                style={{ marginTop: 20 }}
+                                style={{ margin: 20 }}
                             />
-                            <Text style={{ ...fontStyles.textSpecialBold }}>Chưa có thông báo nào</Text>
+                            <Text style={{ ...fontStyles.textSpecialBold }}>Hiện chưa theo dõi ai</Text>
                         </View>
                     )}
                 </>

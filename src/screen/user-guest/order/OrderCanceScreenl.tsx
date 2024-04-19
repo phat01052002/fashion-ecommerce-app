@@ -1,18 +1,20 @@
 import { Skeleton } from '@rneui/themed';
 import React, { useEffect, useState } from 'react';
 import { View, Image, Dimensions, ScrollView, Text } from 'react-native';
-import { fontStyles } from '../../themes/Themes';
-interface OrderDeliveryProps {}
-const OrderDelivery: React.FC<OrderDeliveryProps> = (props) => {
-    const [listOrderDelivery, setListOrderDelivery] = useState([]);
+import SkeletonProductList from '../../../components/skeleton/SkeletonProductList';
+import { flexStyles, fontStyles, screenStyles } from '../../../themes/Themes';
+interface OrderCancelProps {}
+const OrderCancel: React.FC<OrderCancelProps> = (props) => {
+    const [listOrderCancel, setListOrderCancel] = useState([]);
     const [isLoading, setIsLoading] = useState<Boolean>(true);
+
     //
     const [windowWidth, setWindowWidth] = useState(Dimensions.get('window').width);
     //
 
     const getListOrder = async () => {
         setTimeout(() => {
-            setIsLoading(false);
+            setIsLoading(true);
         }, 1000);
     };
     useEffect(() => {
@@ -21,13 +23,15 @@ const OrderDelivery: React.FC<OrderDeliveryProps> = (props) => {
     return (
         <>
             {isLoading ? (
-                <Skeleton animation="pulse" width={windowWidth / 1.1} height={300} style={{ marginTop: 20 }} />
-            ) : listOrderDelivery.length > 0 ? (
+                <ScrollView>
+                    <SkeletonProductList />
+                </ScrollView>
+            ) : listOrderCancel.length > 0 ? (
                 <View style={{}}></View>
             ) : (
-                <View style={{ alignItems: 'center' }}>
+                <View style={{ ...screenStyles.container, ...flexStyles.jCenter_alCenter }}>
                     <Image
-                        source={require('../../../assets/empty-order.png')}
+                        source={require('../../../../assets/empty-order.png')}
                         resizeMode="contain"
                         style={{ marginTop: 20 }}
                     />
@@ -37,4 +41,4 @@ const OrderDelivery: React.FC<OrderDeliveryProps> = (props) => {
         </>
     );
 };
-export default OrderDelivery;
+export default OrderCancel;

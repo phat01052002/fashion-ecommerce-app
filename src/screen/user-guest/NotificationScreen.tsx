@@ -3,6 +3,7 @@ import { Dimensions, ScrollView, Text, View } from 'react-native';
 import { Skeleton } from '@rneui/themed';
 import { flexStyles, fontStyles, screenStyles } from '../../themes/Themes';
 import { Image } from 'react-native';
+import SkeletonCommon from '../../components/skeleton/SkeletonCommon';
 
 interface NotificationScreenProps {}
 const NotificationScreen: React.FC<NotificationScreenProps> = (props) => {
@@ -21,11 +22,7 @@ const NotificationScreen: React.FC<NotificationScreenProps> = (props) => {
         <>
             {isLoading ? (
                 <ScrollView>
-                    <View style={{ ...flexStyles.jCenter_alCenter, ...screenStyles.container }}>
-                        <Skeleton animation="pulse" width={windowWidth / 1.1} height={300} style={{ marginTop: 20 }} />
-                        <Skeleton animation="pulse" width={windowWidth / 1.1} height={300} style={{ marginTop: 20 }} />
-                        <Skeleton animation="pulse" width={windowWidth / 1.1} height={300} style={{ marginTop: 20 }} />
-                    </View>
+                    <SkeletonCommon />
                 </ScrollView>
             ) : (
                 <>
@@ -34,9 +31,9 @@ const NotificationScreen: React.FC<NotificationScreenProps> = (props) => {
                             <Text>Notification Screen</Text>
                         </View>
                     ) : (
-                        <View style={{ ...flexStyles.jCenter_alCenter }}>
+                        <View style={{ ...flexStyles.jCenter_alCenter, ...screenStyles.container }}>
                             <Image
-                                source={require('../../../assets/empty-notification')}
+                                source={require('../../../assets/empty-notification.png')}
                                 resizeMode="contain"
                                 style={{ marginTop: 20 }}
                             />

@@ -6,11 +6,11 @@ import { fontStyles, headerStyles } from '../../themes/Themes';
 import TabNavigation from './TabNavigation';
 import CartScreen from '../../screen/user-guest/CartScreen';
 import { Icon } from '@rneui/themed';
-import OrderScreen from '../../screen/user-guest/OrderScreen';
 import WatchedScreen from '../../screen/user-guest/WatchedScreen';
 import FavoriteScreen from '../../screen/user-guest/FavoriteScreen';
 import FollowScreen from '../../screen/user-guest/FollowScreen';
 import ValueSearchScreen from '../../screen/user-guest/ValueSearchScreen';
+import OrderTopTabsNavigation from './OrderTopTabsNavigation';
 
 interface RootNavigationProps {}
 const StackRoot = createNativeStackNavigator();
@@ -52,7 +52,7 @@ const RootNavigation: React.FC<RootNavigationProps> = (props) => {
             />
             <StackRoot.Screen
                 name="OrderScreen"
-                component={OrderScreen}
+                component={OrderTopTabsNavigation}
                 options={{
                     headerTitle: 'Đơn hàng',
                     headerBackTitleVisible: false,

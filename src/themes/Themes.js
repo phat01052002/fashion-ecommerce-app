@@ -119,7 +119,11 @@ export const flexStyles = StyleSheet.create({
     },
     jCenter_alStart: {
         justifyContent: 'center',
-        alignItems: 'start',
+        alignItems: 'flex-start',
+    },
+    jCenter_alEnd: {
+        justifyContent: 'center',
+        alignItems: 'flex-end',
     },
 });
 
