@@ -5,8 +5,8 @@ import { StyleProp } from 'react-native';
 import { View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { flexStyles, screenStyles } from '../../themes/Themes';
-interface SkeletonProductListProps {}
-const SkeletonProductList: React.FC<SkeletonProductListProps> = (props) => {
+interface SkelentonListProductOrderProps {}
+const SkelentonListProductOrder: React.FC<SkelentonListProductOrderProps> = (props) => {
     const [windowWidth, setWindowWidth] = useState(Dimensions.get('window').width);
 
     return (
@@ -332,4 +332,4 @@ const SkeletonProductList: React.FC<SkeletonProductListProps> = (props) => {
         </View>
     );
 };
-export default SkeletonProductList;
+export default SkelentonListProductOrder;

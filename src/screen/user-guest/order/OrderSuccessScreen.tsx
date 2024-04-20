@@ -1,7 +1,7 @@
 import { Skeleton } from '@rneui/themed';
 import React, { useEffect, useState } from 'react';
 import { View, Image, Dimensions, ScrollView, Text } from 'react-native';
-import SkeletonProductList from '../../../components/skeleton/SkeletonProductList';
+import SkeletonListProductOrder from '../../../components/skeleton/SkeletonListProductOrder';
 import { flexStyles, fontStyles, screenStyles } from '../../../themes/Themes';
 interface OrderSuccessProps {}
 const OrderSuccess: React.FC<OrderSuccessProps> = (props) => {
@@ -24,7 +24,7 @@ const OrderSuccess: React.FC<OrderSuccessProps> = (props) => {
         <>
             {isLoading ? (
                 <ScrollView>
-                    <SkeletonProductList />
+                    <SkeletonListProductOrder />
                 </ScrollView>
             ) : listOrderSuccess.length > 0 ? (
                 <View style={{}}></View>

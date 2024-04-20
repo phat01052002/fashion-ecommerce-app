@@ -16,7 +16,7 @@ const SettingScreen: React.FC<SettingScreenProps> = (props) => {
 
     return (
         <View style={{ ...screenStyles.container }}>
-            {role != typeRole.GUEST ? (
+            {role == typeRole.GUEST ? (
                 <View style={{ ...viewStyles.fullWidthFullHeight, ...flexStyles.jCenter_alCenter }}>
                     <Text style={{ ...fontStyles.textSpecialTitle }}>Bạn chưa đăng nhập </Text>
                     <Text style={{ ...fontStyles.textBold, marginTop: 30 }}>Vui lòng đăng nhập</Text>
