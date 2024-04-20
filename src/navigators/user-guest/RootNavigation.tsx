@@ -12,6 +12,8 @@ import FollowScreen from '../../screen/user-guest/FollowScreen';
 import ValueSearchScreen from '../../screen/user-guest/ValueSearchScreen';
 import OrderTopTabsNavigation from './OrderTopTabsNavigation';
 import ShopTabsNavigation from '../shop/ShopTabsNavigation';
+import LoginScreen from '../../screen/user-guest/login-singup/LoginScreen';
+import LoginStackNavigation from './LoginStackNavigation';
 
 interface RootNavigationProps {}
 const StackRoot = createNativeStackNavigator();
@@ -31,6 +33,13 @@ const RootNavigation: React.FC<RootNavigationProps> = (props) => {
             <StackRoot.Screen
                 name="DefaultScreen"
                 component={TabNavigation}
+                options={{
+                    header: () => null,
+                }}
+            />
+            <StackRoot.Screen
+                name="Login"
+                component={LoginStackNavigation}
                 options={{
                     header: () => null,
                 }}

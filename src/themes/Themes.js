@@ -7,14 +7,13 @@ export const screenStyles = StyleSheet.create({
         height: '100%',
         backgroundColor: 'white',
     },
-   
 });
-export const viewStyles=StyleSheet.create({
+export const viewStyles = StyleSheet.create({
     fullWidthFullHeight: {
         width: '100%',
         height: '100%',
     },
-})
+});
 export const headerStyles = StyleSheet.create({
     header: {
         backgroundColor: MAIN_COLOR,
@@ -117,6 +116,15 @@ export const cardStyles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    card4: {
+        backgroundColor: COLOR_CARD_ELEMENTS,
+        margin: 7,
+        borderRadius: 50,
+        width: '17%',
+        aspectRatio: 1 / 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
 });
 
 export const flexStyles = StyleSheet.create({
@@ -140,5 +148,12 @@ export const boxShadowStyles = StyleSheet.create({
         shadowOffset: { width: 1, height: 2 },
         shadowOpacity: 0.7,
         borderRadius: 10,
+    },
+});
+export const buttonStyles = StyleSheet.create({
+    buttonLogin: {
+        borderRadius: 30,
+        height: 60,
+        borderWidth: 1,
     },
 });

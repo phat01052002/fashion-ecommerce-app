@@ -1,3 +1,5 @@
+import { ParamListBase, useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Button, Dialog } from '@rneui/themed';
 import React, { useState } from 'react';
 import { Text, View } from 'react-native';
@@ -10,6 +12,8 @@ import { toggleDialog } from '../../../untils/Logic';
 
 interface SettingScreenProps {}
 const SettingScreen: React.FC<SettingScreenProps> = (props) => {
+    const navigationStack = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+
     const store = useStore();
     const role = useSelector((state: ReducerProps) => state.role);
     const [isVisibleDialog, setIsVisibleDialog] = useState<boolean>(false);
@@ -20,7 +24,14 @@ const SettingScreen: React.FC<SettingScreenProps> = (props) => {
                 <View style={{ ...viewStyles.fullWidthFullHeight, ...flexStyles.jCenter_alCenter }}>
                     <Text style={{ ...fontStyles.textSpecialTitle }}>Bạn chưa đăng nhập </Text>
                     <Text style={{ ...fontStyles.textBold, marginTop: 30 }}>Vui lòng đăng nhập</Text>
-                    <Button buttonStyle={{ borderRadius: 20, marginTop: 200 }}>Đăng nhập / Đăng ký</Button>
+                    <Button
+                        buttonStyle={{ borderRadius: 20, marginTop: 200 }}
+                        onPress={() => {
+                            navigationStack.navigate('Login');
+                        }}
+                    >
+                        Đăng nhập / Đăng ký
+                    </Button>
                 </View>
             ) : (
                 <>

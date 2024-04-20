@@ -43,7 +43,12 @@ const CardAccount: React.FC<CardAccountProps> = (props) => {
                         }}
                     >
                         <Text style={{ ...fontStyles.textSpecialBold }}>Chào mừng bạn đến với FSG</Text>
-                        <Button buttonStyle={{ width: '60%', marginTop: 30, borderRadius: 10 }}>
+                        <Button
+                            buttonStyle={{ width: '60%', marginTop: 30, borderRadius: 10 }}
+                            onPress={() => {
+                                navigationStack.navigate('Login');
+                            }}
+                        >
                             Đăng nhập / Đăng ký
                         </Button>
                         <Image
