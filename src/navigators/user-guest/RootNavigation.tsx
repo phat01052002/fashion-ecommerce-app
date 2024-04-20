@@ -20,7 +20,6 @@ const StackRoot = createNativeStackNavigator();
 
 const RootNavigation: React.FC<RootNavigationProps> = (props) => {
     const navigationStack = useNavigation<NativeStackNavigationProp<ParamListBase>>();
-
     return (
         <StackRoot.Navigator
             screenOptions={{

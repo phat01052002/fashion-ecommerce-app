@@ -6,6 +6,7 @@ import { Text, View } from 'react-native';
 import { white } from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
 import { useSelector, useStore } from 'react-redux';
 import { COLOR_BORDER_ELEMENTS, typeRole } from '../../../common/Common';
+import { change_role } from '../../../reducers/Actions';
 import { ReducerProps } from '../../../reducers/ReducersProps';
 import { flexStyles, fontStyles, screenStyles, viewStyles } from '../../../themes/Themes';
 import { toggleDialog } from '../../../untils/Logic';
@@ -66,6 +67,8 @@ const SettingScreen: React.FC<SettingScreenProps> = (props) => {
                                 title="Đồng ý"
                                 onPress={() => {
                                     toggleDialog(setIsVisibleDialog);
+                                    store.dispatch(change_role('GUEST'));
+                                    navigationStack.navigate('Login');
                                 }}
                             />
                             <Dialog.Button title="Huỷ" onPress={() => toggleDialog(setIsVisibleDialog)} />

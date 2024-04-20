@@ -1,16 +1,22 @@
 export const increment = () => {
     return {
-      type: "INCREMENT",
+        type: 'INCREMENT',
     };
-  };
-  
-  export const decrement = () => {
+};
+
+export const decrement = () => {
     return {
-      type: "DECREMENT",
+        type: 'DECREMENT',
     };
-  };
-  export const set_to_zero = () => {
+};
+export const set_to_zero = () => {
     return {
-      type: "SET_TO_ZERO",
+        type: 'SET_TO_ZERO',
     };
-  };
+};
+export const change_role = (payload) => {
+    return {
+        type: 'CHANGE_ROLE',
+        payload,
+    };
+};

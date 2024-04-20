@@ -181,6 +181,7 @@ const AccountScreen: React.FC<AccountScreenProps> = (props) => {
                             title="Đăng nhập"
                             onPress={() => {
                                 toggleDialog(setIsVisibleDialog);
+                                navigationStack.navigate('Login');
                             }}
                         />
                         <Dialog.Button title="Huỷ" onPress={() => toggleDialog(setIsVisibleDialog)} />

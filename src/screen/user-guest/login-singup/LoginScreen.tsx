@@ -8,18 +8,23 @@ import { buttonStyles, cardStyles, flexStyles, fontStyles, screenStyles } from '
 import { filterInput, filterInputNumber } from '../../../untils/Logic';
 import { Formik } from 'formik';
 import LoginOTPScreen from './SignUpOTPScreen';
+import { GetApi, GetGuestApi, PostGuestApi } from '../../../untils/Api.';
+import { useStore } from 'react-redux';
+import { change_role } from '../../../reducers/Actions';
 
 interface LoginScreenProps {}
 const LoginScreen: React.FC<LoginScreenProps> = () => {
     const navigationStack = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+    //
     const [phone, setPhone] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [unViewPassword, setUnViewPassword] = useState<boolean>(true);
-
     const [errInputPhone, setErrInputPhone] = useState<string>('');
     const [errInputPassword, setErrInputPassword] = useState<string>('');
+    //
+    const store = useStore();
 
-    const handlePressLogin = () => {
+    const handlePressLogin = async () => {
         // use function dismiss in keyboard to unfocus any input after press button
         Keyboard.dismiss();
         if (phone == '' || password == '') {
@@ -32,7 +37,14 @@ const LoginScreen: React.FC<LoginScreenProps> = () => {
         } else if (phone.length < 10) {
             setErrInputPhone('SĐT không hợp lệ');
         } else {
-            setErrInputPhone('');
+            const resLogin = await PostGuestApi('/guest/authenticate/login', { username: phone, password: password });
+            if (resLogin.data.message == 'Login success') {
+                const resRole = await GetApi('/guest/authenticate/get-role', resLogin.data.accessToken);
+                store.dispatch(change_role(resRole.data));
+                navigationStack.navigate('DefaultScreen');
+            } else {
+                alert('SĐT hoặc mật khẩu không đúng');
+            }
         }
     };
     const handlePressSignUp = () => {
@@ -119,7 +131,7 @@ const LoginScreen: React.FC<LoginScreenProps> = () => {
                     }}
                     onPress={() => handlePressLogin()}
                 >
-                    Tiếp tục
+                    Đăng nhập
                 </Button>
                 <View
                     style={{
