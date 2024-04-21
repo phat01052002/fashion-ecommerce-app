@@ -7,7 +7,6 @@ import { MAIN_COLOR } from '../../../common/Common';
 import { buttonStyles, cardStyles, flexStyles, fontStyles, screenStyles } from '../../../themes/Themes';
 import { filterInput, filterInputNumber } from '../../../untils/Logic';
 import { Formik } from 'formik';
-import LoginOTPScreen from './SignUpOTPScreen';
 import { GetApi, GetGuestApi, PostGuestApi } from '../../../untils/Api.';
 import { useStore } from 'react-redux';
 import { change_role } from '../../../reducers/Actions';
@@ -37,7 +36,10 @@ const LoginScreen: React.FC<LoginScreenProps> = () => {
         } else if (phone.length < 10) {
             setErrInputPhone('SĐT không hợp lệ');
         } else {
-            const resLogin = await PostGuestApi('/guest/authenticate/login', { username: phone, password: password });
+            const resLogin = await PostGuestApi('/guest/authenticate/login', {
+                username: phone,
+                password: password,
+            });
             if (resLogin.data.message == 'Login success') {
                 const resRole = await GetApi('/guest/authenticate/get-role', resLogin.data.accessToken);
                 store.dispatch(change_role(resRole.data));
