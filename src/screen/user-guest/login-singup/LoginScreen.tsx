@@ -10,6 +10,7 @@ import { Formik } from 'formik';
 import { GetApi, GetGuestApi, PostGuestApi } from '../../../untils/Api.';
 import { useStore } from 'react-redux';
 import { change_role } from '../../../reducers/Actions';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface LoginScreenProps {}
 const LoginScreen: React.FC<LoginScreenProps> = () => {
@@ -25,6 +26,10 @@ const LoginScreen: React.FC<LoginScreenProps> = () => {
 
     const handlePressLogin = async () => {
         // use function dismiss in keyboard to unfocus any input after press button
+        const VALUE = await AsyncStorage.getItem('TOKEN');
+        if (VALUE !== null) {
+            alert(VALUE);
+        }
         Keyboard.dismiss();
         if (phone == '' || password == '') {
             if (phone == '') {
@@ -43,6 +48,9 @@ const LoginScreen: React.FC<LoginScreenProps> = () => {
             if (resLogin.data.message == 'Login success') {
                 const resRole = await GetApi('/guest/authenticate/get-role', resLogin.data.accessToken);
                 store.dispatch(change_role(resRole.data));
+                //save token --- TO GET TOKEN , PUT IT IN A FUNCTION WITH ASYNC, USE THIS CODE (const VALUE = await AsyncStorage.getItem('VALUE'))
+                await AsyncStorage.setItem('TOKEN', resLogin.data.accessToken);
+
                 navigationStack.navigate('DefaultScreen');
             } else {
                 alert('SĐT hoặc mật khẩu không đúng');

@@ -9,6 +9,11 @@ import { filterInput, filterInputNumber } from '../../../untils/Logic';
 import { FirebaseRecaptchaVerifierModal, FirebaseRecaptchaBanner } from 'expo-firebase-recaptcha';
 import { PhoneAuthProvider, RecaptchaVerifier, signInWithCredential } from 'firebase/auth';
 import { auth, firebaseConfig } from '../../../firebase/firebase';
+import { GetApi, PostGuestApi } from '../../../untils/Api.';
+import { useStore } from 'react-redux';
+import { change_role } from '../../../reducers/Actions';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 interface SignUpScreenProps {}
 const SignUpScreen: React.FC<SignUpScreenProps> = () => {
     const navigationStack = useNavigation<NativeStackNavigationProp<ParamListBase>>();
@@ -21,6 +26,7 @@ const SignUpScreen: React.FC<SignUpScreenProps> = () => {
 
     const recaptchaVerifier = useRef(null);
     const [verificationId, setVerificationID] = useState('');
+    const store = useStore();
 
     const handlePressLogin = async () => {
         // use function dismiss in keyboard to unfocus any input after press button
@@ -48,9 +54,21 @@ const SignUpScreen: React.FC<SignUpScreenProps> = () => {
         try {
             const credential = PhoneAuthProvider.credential(verificationId, verificationCode); // get the credential
             await signInWithCredential(auth, credential); // verify the credential
-            alert('thành công');
+            const resRegister = await PostGuestApi('/guest/authenticate/register', {
+                username: phone,
+                password: password,
+            });
+            if (resRegister.data.message == 'Register Success') {
+                const resRole = await GetApi('/guest/authenticate/get-role', resRegister.data.accessToken);
+                store.dispatch(change_role(resRole.data));
+                await AsyncStorage.setItem('TOKEN', resRegister.data.accessToken);
+
+                navigationStack.navigate('DefaultScreen');
+            } else {
+                alert('Đăng kí không thành công');
+            }
         } catch (error) {
-            alert('thất bại');
+            alert('Thất bại');
         }
     };
     return (

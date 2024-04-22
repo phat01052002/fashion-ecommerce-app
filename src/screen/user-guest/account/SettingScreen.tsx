@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ParamListBase, useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Button, Dialog } from '@rneui/themed';
@@ -65,9 +66,10 @@ const SettingScreen: React.FC<SettingScreenProps> = (props) => {
                         <Dialog.Actions>
                             <Dialog.Button
                                 title="Đồng ý"
-                                onPress={() => {
+                                onPress={async () => {
                                     toggleDialog(setIsVisibleDialog);
                                     store.dispatch(change_role('GUEST'));
+                                    await AsyncStorage.removeItem('TOKEN');
                                     navigationStack.navigate('Login');
                                 }}
                             />

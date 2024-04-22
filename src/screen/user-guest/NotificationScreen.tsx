@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Dimensions, ScrollView, Text, View } from 'react-native';
+import { Dimensions, ScrollView, Text, View, RefreshControl } from 'react-native';
 import { Skeleton } from '@rneui/themed';
 import { flexStyles, fontStyles, screenStyles } from '../../themes/Themes';
 import { Image } from 'react-native';
@@ -15,9 +15,15 @@ const NotificationScreen: React.FC<NotificationScreenProps> = (props) => {
             setIsLoading(false);
         }, 1000);
     };
+    const onRefresh = () => {
+        setListNotification([]);
+        setTimeout(() => {
+            setIsLoading(true);
+        }, 300);
+    };
     useEffect(() => {
-        getListNotification();
-    }, []);
+        if (isLoading) getListNotification();
+    }, [isLoading]);
     return (
         <>
             {isLoading ? (
@@ -26,20 +32,25 @@ const NotificationScreen: React.FC<NotificationScreenProps> = (props) => {
                 </ScrollView>
             ) : (
                 <>
-                    {listNotification.length > 0 ? (
-                        <View style={{ ...flexStyles.jCenter_alCenter, ...screenStyles.container }}>
-                            <Text>Notification Screen</Text>
-                        </View>
-                    ) : (
-                        <View style={{ ...flexStyles.jCenter_alCenter, ...screenStyles.container }}>
-                            <Image
-                                source={require('../../../assets/empty-notification.png')}
-                                resizeMode="contain"
-                                style={{ marginTop: 20 }}
-                            />
-                            <Text style={{ ...fontStyles.textSpecialBold }}>Chưa có thông báo nào</Text>
-                        </View>
-                    )}
+                    <ScrollView
+                        contentContainerStyle={{ backgroundColor: 'white', flexGrow: 1 }}
+                        refreshControl={<RefreshControl onRefresh={onRefresh} refreshing={false} />}
+                    >
+                        {listNotification.length > 0 ? (
+                            <View style={{ ...flexStyles.jCenter_alCenter, ...screenStyles.container }}>
+                                <Text>Notification Screen</Text>
+                            </View>
+                        ) : (
+                            <View style={{ ...flexStyles.jCenter_alCenter, ...screenStyles.container }}>
+                                <Image
+                                    source={require('../../../assets/empty-notification.png')}
+                                    resizeMode="contain"
+                                    style={{ marginTop: 20 }}
+                                />
+                                <Text style={{ ...fontStyles.textSpecialBold }}>Chưa có thông báo nào</Text>
+                            </View>
+                        )}
+                    </ScrollView>
                 </>
             )}
         </>
