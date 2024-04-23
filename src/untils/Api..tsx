@@ -26,7 +26,7 @@ export const PostGuestApi = (url: string, data: object) => {
 
     return axios.request(config);
 };
-export const GetApi = (url: string,token:string) => {
+export const GetApi = (url: string,token:string | null) => {
     let config = {
         method: 'get',
         maxBodyLength: Infinity,

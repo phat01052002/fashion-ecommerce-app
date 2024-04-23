@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image, Text, View } from 'react-native';
 import { Avatar, Button, Icon } from '@rneui/themed';
 import { COLOR_BORDER_ELEMENTS, MAIN_COLOR, typeRole } from '../../common/Common';
@@ -7,12 +7,35 @@ import { ParamListBase, useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useSelector, useStore } from 'react-redux';
 import { ReducerProps } from '../../reducers/ReducersProps';
+import { GetApi } from '../../untils/Api.';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 interface CardAccountProps {}
-
+interface TypeUser {
+    id: number | null;
+    name: String | null;
+    image: String | null;
+    email: String | null;
+    phone: String | null;
+    sex: String | null;
+    birthDay: Date | null;
+    point: number | null;
+    rankUser: String | null;
+}
 const CardAccount: React.FC<CardAccountProps> = (props) => {
     const navigationStack = useNavigation<NativeStackNavigationProp<ParamListBase>>();
     const store = useStore();
     const role = useSelector((state: ReducerProps) => state.role);
+    const [user, setUser] = useState<TypeUser>();
+
+    const getDataUser = async () => {
+        const token = await AsyncStorage.getItem('TOKEN');
+        const resUserInfo = await GetApi('/user/info', token);
+        setUser(resUserInfo.data);
+    };
+
+    useEffect(() => {
+        getDataUser();
+    }, [role]);
     return (
         <View
             style={{
@@ -88,7 +111,7 @@ const CardAccount: React.FC<CardAccountProps> = (props) => {
                                     style={[fontStyles.textSpecialTitle]}
                                     onPress={() => navigationStack.navigate('InfoUserScreen')}
                                 >
-                                    Tên người dùng {'     '}
+                                    {user ? (user.name ? user.name : user.phone) : null} {'     '}
                                     <Icon
                                         name="pen"
                                         type="font-awesome-5"
